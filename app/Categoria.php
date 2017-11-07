@@ -17,4 +17,9 @@ class Categoria extends Model
     {
         return  $this->hasMany(Productos::class,'producto_id');
     }
+
+    public  static function Subcategorias($id)
+    {
+    	return Categoria::where('categoria_padre',$id)->get();
+    }
 }

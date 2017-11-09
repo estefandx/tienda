@@ -33,9 +33,9 @@ class CategoriaTableSeeder extends Seeder
          //categoria  frutas y verduras 
 
           $frutas = Categoria::create(['nombre' => 'Frutas']);
-        Categoria::create(['nombre' => 'Pollo',
+        Categoria::create(['nombre' => 'Frutas',
     					   'categoria_padre' => $frutas->categoria_id]);
-        Categoria::create(['nombre' => 'Pollo',
+        Categoria::create(['nombre' => 'Verduras',
     					   'categoria_padre' => $frutas->categoria_id]);
 
 

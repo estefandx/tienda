@@ -21,7 +21,7 @@ Route::group(['middleware' => 'auth'], function () {
 //    });
 
 	Route::resource('producto', 'ProductController');
-	Route::get('subcategoria/{id}','ProductController@getSubcategoria');
+	Route::get('producto/subcategoria/{id}','ProductController@getSubcategoria');
 
 
     //Please do not remove this if you want adminlte:route and adminlte:link commands to works correctly.

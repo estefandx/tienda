@@ -29,7 +29,7 @@ desired effect
 |               | sidebar-mini                            |
 |---------------------------------------------------------|
 -->
-<body class="skin-blue sidebar-mini">
+<body class="skin-green sidebar-mini">
 <div id="app" v-cloak>
     <div class="wrapper">
 
@@ -40,7 +40,7 @@ desired effect
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
 
-        @include('adminlte::layouts.partials.contentheader')
+
 
         <!-- Main content -->
         <section class="content">

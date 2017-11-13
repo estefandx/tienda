@@ -7,6 +7,7 @@ use App\Categoria;
 use App\Producto;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
+use Datatables;
 
 class ProductController extends Controller
 {
@@ -103,7 +104,10 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $producto = Producto::find($id);
+        $categorias = Categoria::where('categoria_padre',null)->get();
+        return view('vendor.adminlte.productos.edit',compact('producto','categorias'));
+
     }
 
     /**
@@ -115,7 +119,54 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $producto = Producto::find($id);
+
+        $validator = Validator::make($request->all(), [
+            'productoNombre' => 'required|max:255',
+           // 'subcategoria' => 'required',
+        ]);
+
+
+          if ($validator->fails()) {
+            return redirect('producto/'.$id.'/edit')
+                        ->withErrors($validator)
+                        ->withInput($request->all());
+        } 
+
+
+
+         $file = Input::file('imagen');
+        if (isset($file)){
+            $aleatorio = str_random(10);
+            $nombre = $aleatorio.$file->getClientOriginalName();
+            //$file->move('peliculas',$nombre);
+            \Storage::disk('local')->put($nombre,  \File::get($file));
+            \Storage::disk('local')->delete($producto->url_imagen);
+            $producto->url_imagen = $nombre;
+
+        }
+
+        
+
+        $producto->nombre = $request['productoNombre'];
+        $producto->precio_carulla = $request['precioCarulla'];
+        $producto->precio_exito = $request['precioExito'];
+        $producto->precio_jumbo = $request['precioJumbo'];
+        $producto->precio_euro = $request['precioEuro'];
+        $producto->precio_makro = $request['precioMakro'];
+        $producto->link_carulla = $request['linkCarulla'];
+        $producto->link_exito = $request['linkExito'];
+        $producto->link_jumbo = $request['linkJumbo'];
+        $producto->link_euro = $request['linkEuro'];
+        $producto->link_makro = $request['linkMakro'];
+        $producto->prioridad = $request['opcionPrioridad'];
+        $producto->fecha_inicio = $request['fechaInicio'];
+        $producto->fecha_fin = $request['fechaFin'];
+        $producto->categoria_id = 9;
+        $producto->save();
+        
+     return redirect('/listado_productos');
     }
 
     /**
@@ -137,4 +188,39 @@ class ProductController extends Controller
             return response()->json($subcategorias);
         }
     }
+
+
+     public function listado_productos(){
+        return view('vendor.adminlte.productos.datatable2');
+     }
+
+
+     public function data_productos(){
+
+           return Datatables::eloquent(\App\Producto::query())->make(true);
+     }
+
+     public function data_productos2(){
+
+            $contact = Producto::all();
+ 
+        return Datatables::of($contact)
+           /* ->addColumn('show_photo', function($contact){
+                if ($contact->url_imagen == NULL){
+                    return 'No Image';
+                }
+                return '<img class="rounded-square" width="50" height="50" src="'. url($contact->url_imagen) .'" alt="">';
+            })*/
+            ->addColumn('categoria', function($contact){
+                
+                return  $contact->Categoria->nombre;
+            })
+            ->addColumn('action', function($contact){
+                return '<a href="" class="btn btn-info btn-xs"><i class="glyphicon glyphicon-eye-open"></i> Show</a> ' .
+                       '<a href="'. url('producto/' . $contact->producto_id.'/edit"').' class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i> Edit</a> ' .
+                       '<a onclick="deleteData('. $contact->producto_id .')" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
+            })
+            ->rawColumns(['show_photo','categoria', 'action'])->make(true);
+     }
+
 }

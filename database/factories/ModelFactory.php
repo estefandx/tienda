@@ -21,4 +21,32 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'password' => $password ?: $password = bcrypt('secret'),
         'remember_token' => str_random(10),
     ];
+
+});
+
+
+    /*crear productos*/
+$factory->define(App\Producto::class, function (Faker\Generator $faker) {
+
+
+    return [
+        'nombre' => $faker->name,
+        'url_imagen' => $faker->imageUrl('160', '240'),
+        'precio_carulla' => $faker->numberBetween($min = 1000, $max = 9000),
+            'precio_exito' => $faker->numberBetween($min = 1000, $max = 9000),
+            'precio_jumbo' => $faker->numberBetween($min = 1000, $max = 9000),
+            'precio_euro' => $faker->numberBetween($min = 1000, $max = 9000),
+            'precio_makro' => $faker->numberBetween($min = 1000, $max = 9000),
+            'link_carulla' => $faker->numberBetween($min = 1000, $max = 9000),
+            'link_exito' => $faker->imageUrl('160', '240'),
+            'link_jumbo' => $faker->imageUrl('160', '240'),
+            'link_euro' => $faker->imageUrl('160', '240'),
+            'link_makro' => $faker->imageUrl('160', '240'),
+            'prioridad' => 1,
+            'fecha_inicio' =>  $faker->date($format = 'Y-m-d', $max = 'now'),
+            'fecha_fin' => $faker->date($format = 'Y-m-d', $max = 'now'),
+            'categoria_id' => 8,
+        
+
+    ];
 });

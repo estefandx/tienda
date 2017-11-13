@@ -5,7 +5,7 @@
 	
 
 <div class="ibody">
-	<h2>Registrar Producto</h2>
+	<h2>Editar Producto</h2>
 	@if ($errors->any())
     <div class="alert alert-danger">
         <ul>
@@ -16,13 +16,14 @@
     </div>
 @endif
 
-    <form name="fregistro" id="fregistro"  method="POST" action="{{ url('/producto') }}" enctype="multipart/form-data">
-    	{{ csrf_field() }}
+    <form name="fregistro" id="fregistro"  method="post" action="{{ url("/producto/{$producto->producto_id}") }}"  enctype="multipart/form-data">
+       {{ method_field('put') }}
+    	 {{ csrf_field() }}
 
           <div class="row">
               <div class="col-md-12">
               <label for="productoNombre">Nombre de Producto</label>
-              <input type="text" class="form-control" id="productoNombre" name="productoNombre" placeholder="Producto" value="{{old('productoNombre')}}">
+              <input type="text" class="form-control" id="productoNombre" name="productoNombre" placeholder="Producto" value="{{$producto->nombre}}">
             </div>
           </div>
 
@@ -30,7 +31,7 @@
           <div class="row">
             <div class="col-md-6">
               <label for="categoriaProducto">Categoria</label>
-              <select  value="{{old('categoria')}}" class="form-control " id="categoria" name="categoria" placeholder="Categoria">
+              <select  value="" class="form-control " id="categoria" name="categoria" placeholder="Categoria">
                <option>seleccionar</option>
 				 @foreach($categorias as $categoria)
                         <option value="{{$categoria->categoria_id}}">{{$categoria->nombre}}</option>
@@ -52,27 +53,27 @@
             <div class="row">
               <div class="col-md-4">
                   <label for="precioExito">Precio Exito</label>
-                  <input value="{{old('precioExito')}}"  type="text" class="form-control" id="precioExito" name="precioExito" placeholder="Precio Exito">
+                  <input value="{{$producto->precio_exito}}"  type="text" class="form-control" id="precioExito" name="precioExito" placeholder="Precio Exito">
               </div>
             
               <div class="col-md-4">
                   <label for="precioCarulla">Precio Carulla</label>
-                  <input value="{{old('precioCarulla')}}"  type="text" class="form-control" id="precioCarulla" name="precioCarulla" placeholder="Precio Carulla">
+                  <input value="{{$producto->precio_carulla}}"  type="text" class="form-control" id="precioCarulla" name="precioCarulla" placeholder="Precio Carulla">
              </div>
 
             <div class="col-md-4">
                 <label for="precioEuro">Precio EuroSupermercados</label>
-                <input value="{{old('precioEuro')}}"  type="text" class="form-control" id="precioEuro" name="precioEuro" placeholder="Precio EuroSupermercados">
+                <input value="{{$producto->precio_euro}}"  type="text" class="form-control" id="precioEuro" name="precioEuro" placeholder="Precio EuroSupermercados">
              </div>
 
             <div class="col-md-4">
                 <label for="precioMakro">Precio Makro</label>
-                <input value="{{old('precioMakro')}}" type="text" class="form-control" id="precioMakro" name="precioMakro" placeholder="Precio Makro">
+                <input value="{{$producto->precio_makro}}" type="text" class="form-control" id="precioMakro" name="precioMakro" placeholder="Precio Makro">
              </div>
 
             <div class="col-md-4">
                 <label for="precioJumbo">Precio Jumbo</label>
-                <input value="{{old('precioJumbo')}}" type="text" class="form-control" id="precioJumbo" name="precioJumbo" placeholder="Precio Jumbo">
+                <input value="{{$producto->precio_jumbo}}" type="text" class="form-control" id="precioJumbo" name="precioJumbo" placeholder="Precio Jumbo">
              </div>
             </div>
            
@@ -81,27 +82,27 @@
             <div class="row">
               <div class="col-md-4">
                   <label for="linkExito">Link Exito</label>
-          <input  value="{{old('linkExito')}}" type="text" class="form-control" id="linkExito" name="linkExito" placeholder="Link Exito">
+          <input  value="{{$producto->link_exito}}" type="text" class="form-control" id="linkExito" name="linkExito" placeholder="Link Exito">
               </div>
             
               <div class="col-md-4">
                 <label for="linkCarulla">Link Carulla</label>
-          <input value="{{old('linkCarulla')}}" type="text" class="form-control" id="linkCarulla" name="linkCarulla" placeholder="Link Carulla">
+          <input value="{{$producto->link_carulla}}" type="text" class="form-control" id="linkCarulla" name="linkCarulla" placeholder="Link Carulla">
              </div>
 
             <div class="col-md-4">
                 <label for="linkEuro">Link EuroSupermercados</label>
-          <input value="{{old('linkEuro')}}" type="text" class="form-control" id="linkEuro" name="linkEuro" placeholder="Link EuroSupermercados">
+          <input value="{{$producto->link_euro}}" type="text" class="form-control" id="linkEuro" name="linkEuro" placeholder="Link EuroSupermercados">
              </div>
              
             <div class="col-md-4">
                 <label for="linkMakro">Link Makro</label>
-          <input value="{{old('linkMakro')}}" type="text" class="form-control" id="linkMakro" name="linkMakro" placeholder="Link Makro">
+          <input value="{{$producto->link_makro}}" type="text" class="form-control" id="linkMakro" name="linkMakro" placeholder="Link Makro">
              </div>
 
             <div class="col-md-4">
                 <label for="linkJumbo">Link Jumbo</label>
-          <input value="{{old('linkJumbo')}}" type="text" class="form-control" id="linkJumbo" name="linkJumbo" placeholder="Link Jumbo">
+          <input value="{{$producto->link_jumbo}}" type="text" class="form-control" id="linkJumbo" name="linkJumbo" placeholder="Link Jumbo">
              </div>
             </div>
 
@@ -135,12 +136,12 @@
           <div class="row">
             <div class="col-md-6">
                 <label for="fechaInicio">Fecha Inicio de Publicidad</label>
-                <input  value="{{old('fechaInicio')}}" type="date" name="fechaInicio" class="form-control" id="fechaInicio">
+                <input  value="{{$producto->fecha_inicio}}" type="date" name="fechaInicio" class="form-control" id="fechaInicio">
             </div>
 
             <div class="col-md-6">
                 <label for="fechaFin">Fecha Fin de Publicidad</label>
-                <input value="{{old('fechaFin')}}" type="date" name="fechaFin" class="form-control" id="fechaFin">
+                <input value="{{$producto->fecha_fin}}" type="date" name="fechaFin" class="form-control" id="fechaFin">
             </div>
 
           </div>
@@ -148,7 +149,7 @@
            <div class="row">
             <div class="col-md-6">
             	<label for="fechaFin">Imagen den producto</label>
-                 <input type="file" id="imagen" name="imagen" placeholder="duracion(minutos)" class="form-control">
+                 <input type="file" id="imagen" name="imagen" placeholder="" class="form-control">
             </div>
           </div> <br>
 

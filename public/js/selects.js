@@ -7,3 +7,5 @@ $("#categoria").change(event => {
 		});
 	});
 })
+
+

@@ -22,9 +22,20 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::resource('producto', 'ProductController');
 	Route::get('producto/subcategoria/{id}','ProductController@getSubcategoria');
+	Route::get('producto/{id_producto}/subcategoria/{id}','ProductController@getSubcategoria');
+	Route::get('/table', function () {
+    return view('vendor.adminlte.productos.table');
+    });
+
+    Route::get('listado_productos_data','ProductController@data_productos');
+    Route::get('listado_productos_data2','ProductController@data_productos2');
+
+    Route::get('listado_productos','ProductController@listado_productos');
 
 
     //Please do not remove this if you want adminlte:route and adminlte:link commands to works correctly.
     #adminlte_routes
 });
+
+
 

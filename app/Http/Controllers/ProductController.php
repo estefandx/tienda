@@ -56,19 +56,25 @@ class ProductController extends Controller
 
 
         $file = Input::file('imagen');
-        $aleatorio = str_random(10);
-        $nombreImagen = $aleatorio.$file->getClientOriginalName();
-        //$file->move('peliculas',$nombre);
-        \Storage::disk('local')->put($nombreImagen,  \File::get($file));
+        if (isset($file)) {
+             $aleatorio = str_random(10);
+             $nombreImagen = $aleatorio.$file->getClientOriginalName();
+            //$file->move('peliculas',$nombre);
+            \Storage::disk('local')->put($nombreImagen,  \File::get($file));
 
-        Producto::create([
+        }else{
+
+             $nombreImagen = "";
+        }
+       
+        Producto::only([
             'nombre' => $request['productoNombre'],
             'url_imagen' => $nombreImagen,
-            'precio_carulla' => $request['precioCarulla'],
-            'precio_exito' => $request['precioExito'],
-            'precio_jumbo' => $request['precioJumbo'],
-            'precio_euro' => $request['precioEuro'],
-            'precio_makro' => $request['precioMakro'],
+            'precio_carulla' => 0,
+            'precio_exito' => 0,
+            'precio_jumbo' => 0,
+            'precio_euro' => 0,
+            'precio_makro' => 0,
             'link_carulla' => $request['linkCarulla'],
             'link_exito' => $request['linkExito'],
             'link_jumbo' => $request['linkJumbo'],

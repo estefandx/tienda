@@ -49,7 +49,7 @@
           </div>
 
           
-            <div class="row">
+        <!--    <div class="row">
               <div class="col-md-4">
                   <label for="precioExito">Precio Exito</label>
                   <input value="{{old('precioExito')}}"  type="text" class="form-control" id="precioExito" name="precioExito" placeholder="Precio Exito">
@@ -74,7 +74,7 @@
                 <label for="precioJumbo">Precio Jumbo</label>
                 <input value="{{old('precioJumbo')}}" type="text" class="form-control" id="precioJumbo" name="precioJumbo" placeholder="Precio Jumbo">
              </div>
-            </div>
+            </div>  -->
            
 
 

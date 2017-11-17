@@ -31,10 +31,12 @@ class CrearTablaProductos extends Migration
             $table->date('fecha_inicio');
             $table->date('fecha_fin');
             $table->integer("categoria_id")->unsigned()->nullable();
+          
             $table->timestamps();
         
 
             $table->foreign("categoria_id")->references('categoria_id')->on('Categorias')->onDelete("cascade");
+           
 
 
             //

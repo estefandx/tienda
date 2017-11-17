@@ -33,6 +33,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('listado_productos','ProductController@listado_productos');
 
 
+    /// url para obtener datos de paginas 
+     Route::get('/paginas','PaginasController@ActualizarProductos');
+    
+
+
     //Please do not remove this if you want adminlte:route and adminlte:link commands to works correctly.
     #adminlte_routes
 });

@@ -41,8 +41,30 @@
           <div class="col-md-12">   
             <img id="shoppingCartImage" src="{{ asset('tienda/images/shopping_cart_racing.png') }}" style="width: 250px">
           </div> 
-          <div class="col-md-4 col-md-offset-4 col-xs-6 col-xs-offset-3" id="mainSearchFormWrapper">
-            <input id="mainSearchForm" type="text" class="form-control" placeholder="Busque tu producto...">
+          <div class="col-md-4 col-md-offset-4 col-xs-7 col-xs-offset-2" id="mainSearchFormWrapper">
+            <form  method="GET" action="{{ url('/buscar') }}" >
+
+              <div class="row" class="form-inline">
+                  <div class="form-group">
+                    <select required  class="form-control " id="categoria" name="categoria" placeholder="Categoria">
+                        <option value="">Seleccione una Categoria</option>
+                         @foreach($categorias as $categoria)
+                        <option value="{{$categoria->categoria_id}}">{{$categoria->nombre}}</option>
+                        @endforeach
+                    </select>
+                  </div>
+                  <div class="form-group">
+                   <select class="form-control" id="subcategoria" name="subcategoria" placeholder="Subcategoria">
+                
+               
+                  </select>
+                  </div>
+                </div>
+                
+                  <input id="mainSearchForm" type="text" name="producto" class="form-control" placeholder="Busque tu producto...">
+                   <button type="submit" class="btn btn-default">Buscar</button>
+             </form>
+           
           </div>
         </div>
     </div>
@@ -62,6 +84,8 @@
        
     <!-- BOOTSTRAP CDN SCRIPT -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <script src="{{ url ('/js/edit.js') }}" type="text/javascript"></script>
       
   </body>
 </html>

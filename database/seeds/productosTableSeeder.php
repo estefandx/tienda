@@ -12,6 +12,6 @@ class productosTableSeeder extends Seeder
      */
     public function run()
     {
-         $peliculas = factory(Producto::class)->times(200)->create();
+         $peliculas = factory(Producto::class)->times(20)->create();
     }
 }

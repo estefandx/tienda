@@ -189,10 +189,13 @@ class ProductController extends Controller
 
     public function getSubcategoria(Request $request, $id)
     {
+        /*
         if ($request->ajax()) {
             $subcategorias = Categoria::Subcategorias($id);
             return response()->json($subcategorias);
-        }
+        } */
+
+        return Categoria::Subcategorias($id);
     }
 
 

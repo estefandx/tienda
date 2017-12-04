@@ -33,7 +33,12 @@
               <label for="categoriaProducto">Categoria</label>
               <select  value="" class="form-control " id="categoria" name="categoria" placeholder="Categoria">
                <option>seleccionar</option>
-				 @foreach($categorias as $categoria)
+				               @foreach($categorias as $categoria)
+
+                       @if($producto->Categoria->categoria_padre === $categoria->categoria_id)
+                            <option selected value="{{$categoria->categoria_id}}">{{$categoria->nombre}}</option>
+                       @endif
+
                         <option value="{{$categoria->categoria_id}}">{{$categoria->nombre}}</option>
                         @endforeach
               </select>
@@ -159,5 +164,11 @@
 
 </div>
 
+
+@endsection
+
+@section('script-pagina')
+
+<script src="{{ url ('/js/edit.js') }}" type="text/javascript"></script>
 
 @endsection

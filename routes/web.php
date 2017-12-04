@@ -11,9 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+
+ Route::get('/','PaginasUsuariosController@index');
+ Route::get('/buscar','ConsultasController@buscarProductos');
+ Route::get('/detalle/{id}','ConsultasController@detalle');
+ //Route::get('/buscar/{categoria}/{subcategoria}/producto','ConsultasController@buscarProductos');
 
 Route::group(['middleware' => 'auth'], function () {
     //    Route::get('/link1', function ()    {

@@ -25,5 +25,13 @@ class PaginasController extends Controller
       print $node->text()."\n";
       });
 
+
+      // precio carulla
+      $client = new Client();
+     $crawler = $client->request('GET', 'http://www.carulla.com/products/0002299303610881/Celular+Samsung+Galaxy+J5+Lte+Ds+Blanco?nocity');
+     $crawler->filter('h4.price')->each(function ($node) {
+      print $node->text()."\n";
+      });
+
    }
 }

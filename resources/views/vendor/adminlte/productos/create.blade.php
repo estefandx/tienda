@@ -160,3 +160,9 @@
 
 
 @endsection
+
+@section('script-pagina')
+
+<script src="{{ url ('/js/selects.js') }}" type="text/javascript"></script>
+
+@endsection

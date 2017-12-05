@@ -75,6 +75,8 @@ class ConsultasController extends Controller
 
       		 $producto = Producto::find($id);
 
+           
+
       		 return dd($producto);
 
       }
@@ -82,7 +84,14 @@ class ConsultasController extends Controller
       public function detalle($id){
 
          $producto = Producto::find($id);
-      	return view('principal.detalleProducto',compact('producto'));
+
+         $fecha_actual=date("Y/m/d");
+           $destacados = Producto::where('prioridad','=',3)
+           ->take(4)
+           ->orderBy('fecha_inicio', 'ASC')
+           ->where('fecha_fin','>',$fecha_actual)->get();
+
+      	return view('principal.detalleProducto',compact('producto','destacados'));
       }
   
 

@@ -2,7 +2,7 @@
 
 
 @section('contenido')
-
+<div class="container">
 <div class="container text-center" id="mainLandingWrapper">
         <div class="row">
           <div class="col-md-12">   
@@ -36,14 +36,24 @@
           </div>
         </div>
     </div>
-      
+     
+     <h2>Productos destacados</h2>
     <div class="container text-center infoBoxesWrapper">
       <div class="row">
-        <div class="col-sm-4">Image first and then text</div>
-        <div class="col-sm-4">Image first and then text</div>
-        <div class="col-sm-4">Image first and then text</div>
+      	 @foreach($destacados as $producto)
+        <div class="col-sm-4">
+			<div class="col-lg-12">	
+				<a href="/detalle/{{$producto->producto_id}}"> <img   src= "productos/{{$producto->url_imagen}}" alt="Generic placeholder image" width="150" height="150"></a>
+		   </div>
+		   <div class="col-lg-12">	
+				<h3>{{$producto->nombre}}</h3>
+		   </div>	
+
+       
+        </div>
+        @endforeach
       </div>
     </div>  
-
+</div>
 @endsection
 	

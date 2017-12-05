@@ -12,7 +12,8 @@
         "laraveles/spanish": "^1.0",
         "weidner/goutte": "^1.0",
         "yajra/laravel-datatables-oracle": "7.*",
-        "sunra/php-simple-html-dom-parser": "1.5.2"
+        "sunra/php-simple-html-dom-parser": "1.5.2",
+        "simple-html-dom/simple-html-dom": "*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

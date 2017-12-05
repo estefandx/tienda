@@ -3,6 +3,7 @@
 
 @section('main-content')
 	
+  <div class="container">
   <table id="contact-table" class="table table-striped">
                         <thead>
                             <tr>
@@ -13,6 +14,9 @@
                             </tr>
                         </thead>
                         <tbody></tbody>
-                    </table>
+ </table>
+
+  </div>                    
 
 @endsection
+

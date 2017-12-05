@@ -45,6 +45,16 @@
 			
 		</div>
 
+		<div class="col-lg-3 ">
+			 @foreach($destacados as $product)
+       
+			<div class="col-lg-12">	
+				<a href="/detalle/{{$product->producto_id}}"> <img   src= "/productos/{{$product->url_imagen}}" alt="Generic placeholder image" width="150" height="150"></a>
+				<h3>{{$product->nombre}}</h3>
+		   </div>
+		   @endforeach
+		
+
 	</div>
 
 

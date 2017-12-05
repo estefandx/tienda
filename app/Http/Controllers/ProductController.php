@@ -183,7 +183,9 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+         $producto = Producto::find($id);
+        $producto->delete();
+       return redirect('/listado_productos');
     }
 
 
@@ -225,9 +227,14 @@ class ProductController extends Controller
                 return  $contact->Categoria->nombre;
             })
             ->addColumn('action', function($contact){
-                return '<a href="" class="btn btn-info btn-xs"><i class="glyphicon glyphicon-eye-open"></i> Show</a> ' .
-                       '<a href="'. url('producto/' . $contact->producto_id.'/edit"').' class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i> Edit</a> ' .
-                       '<a onclick="deleteData('. $contact->producto_id .')" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
+                return 
+                       '<a href="'. url('producto/' . $contact->producto_id.'/edit"').' class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-edit"></i>Editar </a> ' .
+                       
+                       '<form  role="form"  method="post" action="'. url('producto/' . $contact->producto_id) .'">
+                             <input name="_method" type="hidden" value="DELETE">
+                             <input type="hidden" name="_token" value="'. csrf_token(). '"></input>
+                            <input class="btn btn-danger btn-xs" type="submit" value="eliminar" /></input>
+                        </form>';
             })
             ->rawColumns(['show_photo','categoria', 'action'])->make(true);
      }

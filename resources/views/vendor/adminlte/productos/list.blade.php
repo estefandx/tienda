@@ -36,3 +36,14 @@
 
 
 @endsection
+
+@section('script-pagina')
+
+<script>
+    
+    function deleteData(id) {
+        console.log(id);
+    }
+</script>
+
+@endsection

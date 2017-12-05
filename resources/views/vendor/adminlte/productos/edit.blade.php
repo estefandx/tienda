@@ -35,11 +35,11 @@
                <option>seleccionar</option>
 				               @foreach($categorias as $categoria)
 
-                       @if($producto->Categoria->categoria_padre === $categoria->categoria_id)
-                            <option selected value="{{$categoria->categoria_id}}">{{$categoria->nombre}}</option>
-                       @endif
+                      
+                
 
-                        <option value="{{$categoria->categoria_id}}">{{$categoria->nombre}}</option>
+                        <option  @if($producto->Categoria->categoria_padre === $categoria->categoria_id) selected   @endif value="{{$categoria->categoria_id}}">{{$categoria->nombre}}
+                        </option>
                         @endforeach
               </select>
             </div>
@@ -47,7 +47,9 @@
             <div class="col-md-6">
               <label for="subCategoriaProducto">Subcategoria</label>
               <select class="form-control" id="subcategoria" name="subcategoria" placeholder="Subcategoria">
-                
+                 <option selected value="{{$categoria->categoria_id}}">{{$producto->Categoria->nombre}}
+                        </option>
+                    
                
               </select>
             </div>
@@ -116,21 +118,24 @@
 
             <div class="col-md-4">
                 <label>
-                <input type="radio" name="opcionPrioridad" id="opcionPrioridad1" value="1" checked>
-                Prioridad Baja
+                <input @if($producto->prioridad === 1) checked   @endif
+                  type="radio" name="opcionPrioridad" id="opcionPrioridad1" value="1" >
+                  Prioridad Baja
               </label>
             </div>
 
             <div class="col-md-4">
                 <label>
-            <input type="radio" name="opcionPrioridad" id="opcionPrioridad2" value="2">
+            <input @if($producto->prioridad === 1) checked   @endif
+             type="radio" name="opcionPrioridad" id="opcionPrioridad2" value="2">
             Publicidad Normal
           </label>
             </div>
 
             <div class="col-md-4">
                 <label>
-            <input type="radio" name="opcionPrioridad" id="opcionPrioridad3" value="3">
+            <input @if($producto->prioridad === 1) checked   @endif
+             type="radio" name="opcionPrioridad" id="opcionPrioridad3" value="3">
             Publicidad Alta
           </label>
             </div>

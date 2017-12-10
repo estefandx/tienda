@@ -43,7 +43,7 @@
       	 @foreach($destacados as $producto)
         <div class="col-sm-4">
 			<div class="col-lg-12">	
-				<a href="/detalle/{{$producto->producto_id}}"> <img   src= "productos/{{$producto->url_imagen}}" alt="Generic placeholder image" width="150" height="150"></a>
+				<a href="/detalle/{{$producto->producto_id}}"> <img   src= "{{url('productos/', $producto->url_imagen)}}" alt="Generic placeholder image" width="150" height="150"></a>
 		   </div>
 		   <div class="col-lg-12">	
 				<h3>{{$producto->nombre}}</h3>

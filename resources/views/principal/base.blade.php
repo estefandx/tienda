@@ -18,22 +18,21 @@
     
   <body>
 
-     <div class="container-fluid">
-      <div class="row">
-        <div class="col-xs-2 nav-information">
-          <h5>Promociones</h5>
-        </div>
-        <div class="col-xs-2 nav-information">
-          <h5>Categorias</h5>
-        </div>
-        <div class="col-xs-2 nav-information">
-          <h5>Nosotros</h5>
-        </div>
-        <div class="col-xs-2 nav-information">
-          <h5>Contacto</h5>
-        </div>
-      </div>
+    <nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Productos</a>
     </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Promociones</a></li>
+      <li><a href="#">Categorias</a></li>
+      <li><a href="#">Nosotros</a></li>
+      <li><a href="#">Contactos</a></li>
+    </ul>
+  </div>
+</nav>
+
+     
     
     @yield('contenido')
       

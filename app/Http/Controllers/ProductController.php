@@ -67,7 +67,7 @@ class ProductController extends Controller
              $nombreImagen = "";
         }
        
-        Producto::only([
+        Producto::Create([
             'nombre' => $request['productoNombre'],
             'url_imagen' => $nombreImagen,
             'precio_carulla' => 0,
@@ -169,7 +169,7 @@ class ProductController extends Controller
         $producto->prioridad = $request['opcionPrioridad'];
         $producto->fecha_inicio = $request['fechaInicio'];
         $producto->fecha_fin = $request['fechaFin'];
-        $producto->categoria_id = 9;
+        $producto->categoria_id = $request['subcategoria'];
         $producto->save();
         
      return redirect('/listado_productos');

@@ -40,8 +40,9 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request){
+        include(app_path() . '\Http\Controllers\scriptPrecios.php');
+
          $validator = Validator::make($request->all(), [
             'productoNombre' => 'required|max:255',
             'subcategoria' => 'required',
@@ -66,12 +67,14 @@ class ProductController extends Controller
 
              $nombreImagen = "";
         }
+
+
        
         Producto::Create([
             'nombre' => $request['productoNombre'],
             'url_imagen' => $nombreImagen,
             'precio_carulla' => 0,
-            'precio_exito' => 0,
+            'precio_exito' => precioExito($request['linkExito']),
             'precio_jumbo' => 0,
             'precio_euro' => 0,
             'precio_makro' => 0,
@@ -97,9 +100,10 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        include(app_path() . '\Http\Controllers\scriptPrecios.php');
+        $prices = HolaMundo();
     }
 
     /**

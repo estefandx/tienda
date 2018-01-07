@@ -15,7 +15,7 @@
               <div class="row" class="form-inline">
                   <div class="form-group">
                     <select required=""  class="form-control " id="categoria" name="categoria" placeholder="Categoria">
-                        <option value="">Seleccione una Categoria</option>
+                        <option value="0">Seleccione una Categoria</option>
                          @foreach($categorias as $categoria)
                         <option value="{{$categoria->categoria_id}}">{{$categoria->nombre}}</option>
                         @endforeach

@@ -47,8 +47,7 @@
             <div class="col-md-6">
               <label for="subCategoriaProducto">Subcategoria</label>
               <select class="form-control" id="subcategoria" name="subcategoria" placeholder="Subcategoria">
-                 <option selected value="{{$categoria->categoria_id}}">{{$producto->Categoria->nombre}}
-                        </option>
+                 <option selected value="{{$producto->categoria_id}}">{{$producto->Categoria->nombre}}</option>
                     
                
               </select>

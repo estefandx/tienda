@@ -45,7 +45,7 @@ $factory->define(App\Producto::class, function (Faker\Generator $faker) {
             'prioridad' => 3,
             'fecha_inicio' =>  $faker->date($format = 'Y-m-d', $max = 'now'),
             'fecha_fin' => $faker->date($format = 'Y-m-d', $max = 'now'),
-            'categoria_id' => 7,
+            'categoria_id' => 18,
         
 
     ];

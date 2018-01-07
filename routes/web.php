@@ -16,6 +16,8 @@
  Route::get('/','PaginasUsuariosController@index');
  Route::get('/buscar','ConsultasController@buscarProductos');
  Route::get('/detalle/{id}','ConsultasController@detalle');
+ Route::get('/imprimir','ProductController@show');
+
  //Route::get('/buscar/{categoria}/{subcategoria}/producto','ConsultasController@buscarProductos');
 
 Route::group(['middleware' => 'auth'], function () {

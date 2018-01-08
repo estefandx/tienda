@@ -16,7 +16,7 @@ function onselectSubcategoria(){
 
 	$.get('/api/categoria/'+id_categoria+'/subcategoria', function(data){
 
-		var html_select = '<option value="">Seleccionar Subcategoria (Opcional)</option>';
+		var html_select = '<option value="">Seleccionar Subcategoria</option>';
 
 		for (var i = 0; i < data.length; ++i) {
 			 

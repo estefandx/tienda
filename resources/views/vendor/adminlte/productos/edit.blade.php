@@ -16,6 +16,9 @@
     </div>
 @endif
 
+
+
+
     <form name="fregistro" id="fregistro"  method="post" action="{{ url("/producto/{$producto->producto_id}") }}"  enctype="multipart/form-data">
        {{ method_field('put') }}
     	 {{ csrf_field() }}
@@ -125,7 +128,7 @@
 
             <div class="col-md-4">
                 <label>
-            <input @if($producto->prioridad === 1) checked   @endif
+            <input @if($producto->prioridad === 2) checked   @endif
              type="radio" name="opcionPrioridad" id="opcionPrioridad2" value="2">
             Publicidad Normal
           </label>
@@ -133,7 +136,7 @@
 
             <div class="col-md-4">
                 <label>
-            <input @if($producto->prioridad === 1) checked   @endif
+            <input @if($producto->prioridad === 3) checked   @endif
              type="radio" name="opcionPrioridad" id="opcionPrioridad3" value="3">
             Publicidad Alta
           </label>
@@ -162,7 +165,7 @@
             </div>
           </div> <br>
 
-      <button type="submit" class="btn btn-success">Registrar Producto</button>
+      <button type="submit" class="btn btn-success">Actualizar Producto</button>
 
     </form>
 

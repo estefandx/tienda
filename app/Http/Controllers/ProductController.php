@@ -8,6 +8,7 @@ use App\Producto;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
 use Datatables;
+use Illuminate\Support\Facades\Session;
 
 class ProductController extends Controller
 {
@@ -74,7 +75,7 @@ class ProductController extends Controller
             'nombre' => $request['productoNombre'],
             'url_imagen' => $nombreImagen,
             'precio_carulla' => 0,
-            'precio_exito' => precioExito($request['linkExito']),
+            'precio_exito' => 0,
             'precio_jumbo' => 0,
             'precio_euro' => 0,
             'precio_makro' => 0,
@@ -89,6 +90,8 @@ class ProductController extends Controller
             'categoria_id' => $request['subcategoria'],
 
         ]);
+
+         Session::flash('message', 'Producto Registrado correctamente');
 
          return redirect('/producto/create');
            
@@ -175,6 +178,8 @@ class ProductController extends Controller
         $producto->fecha_fin = $request['fechaFin'];
         $producto->categoria_id = $request['subcategoria'];
         $producto->save();
+
+        Session::flash('editar', 'Producto Editado correctamente');
         
      return redirect('/listado_productos');
     }
@@ -189,6 +194,7 @@ class ProductController extends Controller
     {
          $producto = Producto::find($id);
         $producto->delete();
+    Session::flash('eliminar', 'Producto Eliminado correctamente');
        return redirect('/listado_productos');
     }
 

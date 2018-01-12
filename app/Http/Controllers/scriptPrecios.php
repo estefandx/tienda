@@ -56,22 +56,18 @@ require('simple_html_dom.php');
         return $resultado;
     }
 
-
-    //Falta organizar EURO
     function precioEuro($url){
-        $html = new simple_html_dom();
-        $html->load_file($url);
 
-        if (isset($html->find('p[class=price]', 0)->plaintext)) {
-              $post = $html->find('p[class=price]', 0)->plaintext;
-              $resultado = str_replace ( "$", '', $post);
-              $resultado = str_replace ( ".", '', $resultado);
-         } else {
-              $resultado = 0;
-         }
-          
-       
-        return $resultado;
+      $html = new simple_html_dom();
+      $html->load_file($url); 
+      if(isset ($html->find('p[class=price]', 0)->plaintext)){
+          $post = $html->find('p[class=price]', 0)->plaintext;
+          $resultado = str_replace (".", '', $post);
+          $final = substr($resultado, 6);
+          }else{
+            $final = 0;
+          } 
+          return $final; 
         }
 
 

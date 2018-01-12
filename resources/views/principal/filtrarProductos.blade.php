@@ -59,11 +59,60 @@
                             <td> <a href="/detalle/{{$producto->producto_id}}"> <img   src= "productos/{{$producto->url_imagen}}" alt="Generic placeholder image" width="100" height="100"></a>
                             <p>{{$producto->nombre}}</p>
                             </td>
-                            <td @if ($menor === $producto->precio_exito ) style="color: red"  @endif> {{$producto->precio_exito}}</td>
-                            <td @if ($menor === $producto->precio_jumbo ) style="color: red"  @endif> {{$producto->precio_jumbo}}</td>
-                            <td @if ($menor === $producto->precio_makro ) style="color: red"  @endif> {{$producto->precio_makro}}</td>
-                            <td @if ($menor === $producto->precio_carulla ) style="color: red"  @endif> {{$producto->precio_carulla}}</td>
-                            <td @if ($menor === $producto->precio_euro ) style="color: red"  @endif> {{$producto->precio_euro}}</td>
+                            <td @if ($menor === $producto->precio_exito and $producto->precio_exito > 0  ) style="color: red"  @endif>
+                                     @if ($producto->precio_exito > 0)
+                                             
+                                           {{$producto->precio_exito}}
+                                       
+                                    @else
+                                       Producto no disponible
+                                    @endif
+                             
+
+                           </td>
+                            <td @if ($menor === $producto->precio_jumbo and $producto->precio_jumbo > 0 ) style="color: red"  @endif>
+                                     @if ($producto->precio_jumbo > 0)
+                                             
+                                            {{$producto->precio_jumbo}}
+                                       
+                                    @else
+                                       Producto no disponible
+                                    @endif
+                            
+                           </td>
+
+                            <td @if ($menor === $producto->precio_makro and $producto->precio_makro > 0 ) style="color: red"  @endif>
+                                     @if ($producto->precio_makro > 0)
+                                             
+                                             {{$producto->precio_makro}}
+                                       
+                                    @else
+                                       Producto no disponible
+                                    @endif
+                            
+                           </td>
+
+                            <td @if ($menor === $producto->precio_carulla and $producto->precio_carulla > 0 ) style="color: red"  @endif>
+                                    @if ($producto->precio_carulla > 0)
+                                             
+                                             {{$producto->precio_carulla}}
+                                       
+                                    @else
+                                       Producto no disponible
+                                    @endif
+                            
+                           </td>
+
+                            <td @if ($menor === $producto->precio_euro and $producto->precio_euro > 0 ) style="color: red"  @endif>
+                                       @if ($producto->precio_euro > 0)
+                                             
+                                            {{$producto->precio_euro}}
+                                       
+                                    @else
+                                       Producto no disponible
+                                    @endif
+                             
+                           </td>
 
 
                            

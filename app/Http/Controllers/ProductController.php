@@ -74,11 +74,11 @@ class ProductController extends Controller
         Producto::Create([
             'nombre' => $request['productoNombre'],
             'url_imagen' => $nombreImagen,
-            'precio_carulla' => 0,
-            'precio_exito' => 0,
-            'precio_jumbo' => 0,
-            'precio_euro' => 0,
-            'precio_makro' => 0,
+            'precio_carulla' => precioCarulla($request['linkCarulla']),
+            'precio_exito' => precioExito($request['linkExito']),
+            'precio_jumbo' => precioJumbo($request['linkJumbo']),
+            'precio_euro' => precioEuro($request['linkEuro']),
+            'precio_makro' => precioMakro($request['linkMakro']),
             'link_carulla' => $request['linkCarulla'],
             'link_exito' => $request['linkExito'],
             'link_jumbo' => $request['linkJumbo'],
@@ -193,9 +193,9 @@ class ProductController extends Controller
     public function destroy($id)
     {
          $producto = Producto::find($id);
-        $producto->delete();
-    Session::flash('eliminar', 'Producto Eliminado correctamente');
-       return redirect('/listado_productos');
+         $producto->delete();
+         Session::flash('eliminar', 'Producto Eliminado correctamente');
+         return redirect('/listado_productos');
     }
 
 

@@ -38,6 +38,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('listado_productos','ProductController@listado_productos');
 
 
+    Route::get('cargar_archivo','ProductController@cargar_archivo');
+     Route::post('cargar_archivo','ProductController@cargar_datos_usuarios');
+
+
     /// url para obtener datos de paginas 
      Route::get('/paginas','PaginasController@ActualizarProductos');
     

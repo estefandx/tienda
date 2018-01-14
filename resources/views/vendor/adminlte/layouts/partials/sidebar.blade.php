@@ -35,7 +35,8 @@
             <!-- Optionally, you can add icons to the links -->
             <li class=""><a href="{{ url('home') }}"><i class='fa fa-link'></i> <span>{{ trans('adminlte_lang::message.home') }}</span></a></li>
             <li><a href="{{ url('producto/create') }}"><i class='fa fa-link'></i> <span>Registrar Producto</span></a></li>
-             <li><a href="{{ url('/listado_productos') }}"><i class='fa fa-link'></i> <span>Listar Producto</span></a></li>
+            <li><a href="{{ url('/listado_productos') }}"><i class='fa fa-link'></i> <span>Listar Producto</span></a></li>
+            <li><a href="{{ url('cargar_archivo') }}"><i class='fa fa-link'></i> <span>Cargar Archivo </span></a></li>
             <li><a href="#"><i class='fa fa-link'></i> <span>{{ trans('adminlte_lang::message.anotherlink') }}</span></a></li>
 
             <li class="treeview">

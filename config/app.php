@@ -175,6 +175,7 @@ return [
         Yajra\Datatables\DatatablesServiceProvider::class,
          Laraveles\Spanish\SpanishServiceProvider::class,
            Weidner\Goutte\GoutteServiceProvider::class, // [1]
+           Maatwebsite\Excel\ExcelServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -236,6 +237,7 @@ return [
         'AdminLTE' => Acacha\AdminLTETemplateLaravel\Facades\AdminLTE::class,
         'DataTables' => Yajra\DataTables\Facades\DataTables::class,
          'Goutte' => Weidner\Goutte\GoutteFacade::class, // [2]
+         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
 
     ],
 

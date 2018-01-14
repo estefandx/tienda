@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
 use Datatables;
 use Illuminate\Support\Facades\Session;
+use Excel;
+use Storage;
+
 
 class ProductController extends Controller
 {
@@ -247,6 +250,82 @@ class ProductController extends Controller
                         </form>';
             })
             ->rawColumns(['show_photo','categoria', 'action'])->make(true);
+     }
+
+
+     public function cargar_datos_usuarios(Request $request)
+    {
+       include(app_path() . '\Http\Controllers\scriptPrecios.php'); 
+       $archivo = $request->file('archivo');
+       $nombre_original=$archivo->getClientOriginalName();
+       $extension=$archivo->getClientOriginalExtension();
+       $r1=Storage::disk('archivos')->put($nombre_original,  \File::get($archivo) );
+       $ruta  =  storage_path('archivos') ."/". $nombre_original;
+
+       $validator = Validator::make($request->all(), [
+            'archivo' => 'required|mimes:xls,xlsx'
+           // 'subcategoria' => 'required',
+        ]);
+
+
+          if ($validator->fails()) {
+            return redirect('cargar_archivo')
+                        ->withErrors($validator)
+                        ->withInput($request->all());
+        } 
+       
+       if($r1){
+           
+            Excel::selectSheetsByIndex(0)->load($ruta, function($hoja) {
+
+                
+                $hoja->each(function($fila) {
+                    
+                        
+                        if (strlen($fila->nombre) > 0) {
+
+                        $producto=new Producto;
+                        $producto->nombre= $fila->nombre;
+                        $producto->link_carulla= $fila->carulla;
+                        $producto->link_exito= $fila->exito;
+                        $producto->link_jumbo= $fila->jumbo; //este campo llamado telefono se debe agregar en la base de datos c
+                        $producto->link_euro= $fila->euro_supermercado;
+                        $producto->link_makro= $fila->makro;
+                        $producto->prioridad= $fila->prioridad;
+                        $producto->fecha_inicio= $fila->fecha_inicio;
+                        $producto->fecha_fin= $fila->fecha_fin;
+                        $producto->categoria_id= $fila->subcategoria;
+                        $producto->precio_exito= precioExito($fila->exito);
+                        $producto->precio_jumbo= precioJumbo($fila->jumbo);
+                        $producto->precio_euro= precioEuro($fila->euro_supermercado);
+                        $producto->precio_makro= precioMakro($fila->makro);
+                        $producto->precio_carulla= precioCarulla($fila->carulla);
+                        $producto->url_imagen = $fila->imagen;
+                        $producto->save();
+                    
+                        }
+                       
+             
+                });
+
+            });
+
+            Session::flash('correcto', 'archivo cargado correctamente');
+            return redirect('/cargar_archivo');
+        
+       }
+       else
+       {
+            Session::flash('error', 'error al cargar el archivo');
+            return redirect('/cargar_archivo');
+       }
+
+    }
+
+
+     public function cargar_archivo()
+     {
+        return view('vendor.adminlte.productos.cargar-datos');
      }
 
 }

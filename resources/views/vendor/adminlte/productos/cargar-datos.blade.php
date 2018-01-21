@@ -43,12 +43,12 @@
 
            <div class="row">
             <div class="col-md-12">
-            	<label for="fechaFin">archivo de producto</label>
+            	<label for="fechaFin">Subir Archivo de Excel</label>
                  <input type="file" id="archivo" name="archivo" accept=".xlsx"  class="form-control">
             </div>
           </div> <br>
 
-      <button type="submit" class="btn btn-success">Cargar Archivo</button>
+      <button type="submit" class="btn btn-success">Cargar Archivo </button>
 
     </form>
 

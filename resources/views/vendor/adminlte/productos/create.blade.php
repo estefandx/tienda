@@ -57,35 +57,6 @@
               
           </div>
 
-          
-        <!--    <div class="row">
-              <div class="col-md-4">
-                  <label for="precioExito">Precio Exito</label>
-                  <input value="{{old('precioExito')}}"  type="text" class="form-control" id="precioExito" name="precioExito" placeholder="Precio Exito">
-              </div>
-            
-              <div class="col-md-4">
-                  <label for="precioCarulla">Precio Carulla</label>
-                  <input value="{{old('precioCarulla')}}"  type="text" class="form-control" id="precioCarulla" name="precioCarulla" placeholder="Precio Carulla">
-             </div>
-
-            <div class="col-md-4">
-                <label for="precioEuro">Precio EuroSupermercados</label>
-                <input value="{{old('precioEuro')}}"  type="text" class="form-control" id="precioEuro" name="precioEuro" placeholder="Precio EuroSupermercados">
-             </div>
-
-            <div class="col-md-4">
-                <label for="precioMakro">Precio Makro</label>
-                <input value="{{old('precioMakro')}}" type="text" class="form-control" id="precioMakro" name="precioMakro" placeholder="Precio Makro">
-             </div>
-
-            <div class="col-md-4">
-                <label for="precioJumbo">Precio Jumbo</label>
-                <input value="{{old('precioJumbo')}}" type="text" class="form-control" id="precioJumbo" name="precioJumbo" placeholder="Precio Jumbo">
-             </div>
-            </div>  -->
-           
-
 
             <div class="row">
               <div class="col-md-4">
@@ -140,6 +111,27 @@
               
           </div>
 
+
+          <!--SELECT PARA EL DEPARTAMENTO Y LAS CIUDADES
+              -CARGAR DE BD ASI CUANDO SE ELIJA EL DEPTO SE CARGUEN LAS CIUDADES DE ESTOS DEPTOS-->
+
+          <div class="row">
+            <div class="col-md-6">
+              <label for="categoriaProducto">Departamento</label>
+              <select  value="" class="form-control " id="departamento" name="departamento" placeholder="Departamento">
+               <option>Seleccionar</option>
+              </select>
+            </div>
+
+            <div class="col-md-6">
+              <label for="subCategoriaProducto">Ciudad</label>
+              <select class="form-control" id="ciudad" name="ciudad" placeholder="Ciudad">
+                <option>Seleccionar</option>
+              </select>
+            </div>
+              
+          </div>
+          <!-------------------------------- -->
 
           <div class="row">
             <div class="col-md-6">

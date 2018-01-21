@@ -29,10 +29,30 @@
                
                   </select>
                   </div>
+  
+          <div class="form-group">
+              <label for="categoriaProducto">Departamento</label>
+              <select  value="" class="form-control " id="departamento" name="departamento" placeholder="Departamento">
+               <option>Seleccionar</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="subCategoriaProducto">Ciudad</label>
+              <select class="form-control" id="ciudad" name="ciudad" placeholder="Ciudad">
+                <option>Seleccionar</option>
+              </select>
+            </div>
+            <div class="form-group">
+          <input id="mainSearchForm" type="text" name="producto" class="form-control" placeholder="Busque tu producto... (Opcional)">
+</div>
+          <div class="form-group">
+              <button type="submit" class="btn btn-default">Buscar</button>
+                </div>
+
                 </div>
                 
-                  <input id="mainSearchForm" type="text" name="producto" class="form-control" placeholder="Busque tu producto... (Opcional)">
-                   <button type="submit" class="btn btn-default">Buscar</button>
+                  
              </form>
     </div> 
 

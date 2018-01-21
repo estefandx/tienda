@@ -21,13 +21,11 @@
     <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">Productos</a>
+      <a class="navbar-brand" href="#">Inicio</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Promociones</a></li>
-      <li><a href="#">Categorias</a></li>
-      <li><a href="#">Nosotros</a></li>
-      <li><a href="#">Contactos</a></li>
+      <li class="active"><a href="#">Destacados</a></li>
+
     </ul>
   </div>
 </nav>

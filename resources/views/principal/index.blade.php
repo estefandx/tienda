@@ -27,30 +27,25 @@
                   </select>
               </div>
 
-            <div class="row form-group" class="form-inline">     
-              <div class="col-md-6">
-                <label for="categoriaProducto">Departamento</label>
-                <select  value="" class="form-control " id="departamento" name="departamento" placeholder="Departamento">
-                 <option>Seleccionar</option>
-                </select>
-              </div>
-
-              <div class="col-md-6">
+            <div class="form-group">     
                 <label for="subCategoriaProducto">Ciudad</label>
-                <select class="form-control" id="ciudad" name="ciudad" placeholder="Ciudad">
-                  <option>Seleccionar</option>
-                </select>
-                </div>
+                    <select class="form-control" id="ciudad" name="ciudad" placeholder="Ciudad">
+                      <option>Seleccionar</option>
+                      <option>Medellín</option>
+                      <option>Bogotá</option>
+                      <option>Pereira</option>
+                      <option>Cali</option>
+                    </select>
               </div>
 
               <div class="form-group">
-                <div class="row" class="form-inline">  
+ 
                   <input id="mainSearchForm" type="text" name="producto" class="form-control" placeholder="Busque tu producto... (Opcional)">
                   </div>
                 <div class="form-group">
                    <button type="submit" class="btn btn-default">Buscar</button>
                    </div>
-              </div>
+
 
             </div>
           </form>

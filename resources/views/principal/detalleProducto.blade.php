@@ -60,6 +60,9 @@
 		</div>
 
 		<div class="col-lg-3 ">
+			<div>
+				<center><h3>Productos Destacados</h3></center>
+			</div>
 			 @foreach($destacados as $product)
        
 			<div class="col-lg-12">	

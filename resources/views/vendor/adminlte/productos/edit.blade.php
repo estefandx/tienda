@@ -113,6 +113,18 @@
                 <label for="linkJumbo">Link Jumbo</label>
           <input value="{{$producto->link_jumbo}}" type="text" class="form-control" id="linkJumbo" name="linkJumbo" placeholder="Link Jumbo">
              </div>
+
+        <div class="col-md-4">
+              <label for="ciudad">Ciudad</label>
+              <select class="form-control" id="ciudad" name="ciudad" placeholder="Ciudad">
+                      <option>Seleccionar</option>
+                      <option>Medellín</option>
+                      <option>Bogotá</option>
+                      <option>Pereira</option>
+                      <option>Cali</option>
+              </select>
+            </div>
+
             </div>
 
 
@@ -143,27 +155,6 @@
             </div>
               
           </div>
-
-                    <!--SELECT PARA EL DEPARTAMENTO Y LAS CIUDADES
-              -CARGAR DE BD ASI CUANDO SE ELIJA EL DEPTO SE CARGUEN LAS CIUDADES DE ESTOS DEPTOS-->
-
-          <div class="row">
-            <div class="col-md-6">
-              <label for="categoriaProducto">Departamento</label>
-              <select  value="" class="form-control " id="departamento" name="departamento" placeholder="Departamento">
-               <option>Seleccionar</option>
-              </select>
-            </div>
-
-            <div class="col-md-6">
-              <label for="subCategoriaProducto">Ciudad</label>
-              <select class="form-control" id="ciudad" name="ciudad" placeholder="Ciudad">
-                <option>Seleccionar</option>
-              </select>
-            </div>
-              
-          </div>
-          <!-------------------------------- -->
 
           <div class="row">
             <div class="col-md-6">

@@ -36,9 +36,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('listado_productos_data2','ProductController@data_productos2');
 
     Route::get('listado_productos','ProductController@listado_productos');
+    
 
-
-    Route::get('cargar_archivo','ProductController@cargar_archivo');
+     Route::get('cargar_imagenes','ProductController@cargar_imagenes');
+     Route::post('cargar_imagenes','ProductController@guardar_imagenes');
+     
+     Route::get('cargar_archivo','ProductController@cargar_archivo');
      Route::post('cargar_archivo','ProductController@cargar_datos_usuarios');
 
 

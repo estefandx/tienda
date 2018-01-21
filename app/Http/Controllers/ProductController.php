@@ -284,6 +284,7 @@ class ProductController extends Controller
                         
                         if (strlen($fila->nombre) > 0) {
 
+                        
                         $producto=new Producto;
                         $producto->nombre= $fila->nombre;
                         $producto->link_carulla= $fila->carulla;
@@ -326,6 +327,25 @@ class ProductController extends Controller
      public function cargar_archivo()
      {
         return view('vendor.adminlte.productos.cargar-datos');
+     }
+
+
+     public function guardar_imagenes(Request $request)
+    {
+
+        
+
+
+            $files = $request->file('file');
+            foreach($files as $file){
+                $nombreImagen = $file->getClientOriginalName();
+            \Storage::disk('local')->put($nombreImagen,  \File::get($file));
+            }
+    }
+
+       public function cargar_imagenes()
+     {
+        return view('vendor.adminlte.productos.cargar-imagenes');
      }
 
 }

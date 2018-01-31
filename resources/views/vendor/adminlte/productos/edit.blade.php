@@ -117,11 +117,12 @@
         <div class="col-md-4">
               <label for="ciudad">Ciudad</label>
               <select class="form-control" id="ciudad" name="ciudad" placeholder="Ciudad">
-                      <option>Seleccionar</option>
-                      <option>Medellín</option>
-                      <option>Bogotá</option>
-                      <option>Pereira</option>
-                      <option>Cali</option>
+                     @foreach($ciudades as $ciudad)
+
+                      
+                        <option  @if($producto->ciudad_id === $ciudad->ciudad_id) selected   @endif value="{{$ciudad->ciudad_id}}">{{$ciudad->nombre}}
+                        </option>
+                        @endforeach
               </select>
             </div>
 

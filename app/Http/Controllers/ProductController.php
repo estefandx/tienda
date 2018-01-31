@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Categoria;
 use App\Producto;
+use App\Ciudad;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
 use Datatables;
@@ -35,7 +36,8 @@ class ProductController extends Controller
     public function create()
     {
         $categorias = Categoria::where('categoria_padre',null)->get();
-         return view('vendor.adminlte.productos.create',compact('categorias'));
+        $ciudades =   Ciudad::all();
+         return view('vendor.adminlte.productos.create',compact('categorias','ciudades'));
     }
 
     /**
@@ -47,10 +49,38 @@ class ProductController extends Controller
     public function store(Request $request){
         include(app_path() . '\Http\Controllers\scriptPrecios.php');
 
-         $validator = Validator::make($request->all(), [
+       
+        $opcionPrioridad = $request['opcionPrioridad'];
+
+        if ($opcionPrioridad == 1) {
+            
+            $validator = Validator::make($request->all(), [
             'productoNombre' => 'required|max:255',
             'subcategoria' => 'required',
         ]);
+            $time = strtotime("2000-01-01");
+
+             $fecha_inicio = date('Y-m-d',$time);
+             $fechaFin = date('Y-m-d',$time);
+
+
+           
+
+        }else{
+
+           $validator = Validator::make($request->all(), [
+            'productoNombre' => 'required|max:255',
+            'subcategoria' => 'required',
+            'fechaInicio' => 'required',
+            'fechaFin' => 'required',  
+            ]);
+
+            $fecha_inicio = $request['fechaInicio'];
+            $fechaFin = $request['fechaFin'];
+        }
+
+         
+
 
 
           if ($validator->fails()) {
@@ -58,7 +88,9 @@ class ProductController extends Controller
                         ->withErrors($validator)
                         ->withInput($request->all());
         }
+        
 
+        
 
         $file = Input::file('imagen');
         if (isset($file)) {
@@ -71,6 +103,8 @@ class ProductController extends Controller
 
              $nombreImagen = "";
         }
+
+        
 
 
        
@@ -88,9 +122,10 @@ class ProductController extends Controller
             'link_euro' => $request['linkEuro'],
             'link_makro' => $request['linkMakro'],
             'prioridad' => $request['opcionPrioridad'],
-            'fecha_inicio' => $request['fechaInicio'],
-            'fecha_fin' => $request['fechaFin'],
+            'fecha_inicio' =>$fecha_inicio,
+            'fecha_fin' => $fechaFin,
             'categoria_id' => $request['subcategoria'],
+            'ciudad_id'  =>  $request['ciudad'],
 
         ]);
 
@@ -122,7 +157,8 @@ class ProductController extends Controller
     {
         $producto = Producto::find($id);
         $categorias = Categoria::where('categoria_padre',null)->get();
-        return view('vendor.adminlte.productos.edit',compact('producto','categorias'));
+        $ciudades =   Ciudad::all();
+        return view('vendor.adminlte.productos.edit',compact('producto','categorias','ciudades'));
 
     }
 
@@ -138,10 +174,35 @@ class ProductController extends Controller
 
         $producto = Producto::find($id);
 
-        $validator = Validator::make($request->all(), [
+        
+        $opcionPrioridad = $request['opcionPrioridad'];
+
+        if ($opcionPrioridad == 1) {
+            
+            $validator = Validator::make($request->all(), [
             'productoNombre' => 'required|max:255',
-           // 'subcategoria' => 'required',
+            'subcategoria' => 'required',
         ]);
+            $time = strtotime("2000-01-01");
+
+             $fecha_inicio = date('Y-m-d',$time);
+             $fechaFin = date('Y-m-d',$time);
+
+
+           
+
+        }else{
+
+           $validator = Validator::make($request->all(), [
+            'productoNombre' => 'required|max:255',
+            'subcategoria' => 'required',
+            'fechaInicio' => 'required',
+            'fechaFin' => 'required',  
+            ]);
+
+            $fecha_inicio = $request['fechaInicio'];
+            $fechaFin = $request['fechaFin'];
+        }
 
 
           if ($validator->fails()) {
@@ -177,9 +238,11 @@ class ProductController extends Controller
         $producto->link_euro = $request['linkEuro'];
         $producto->link_makro = $request['linkMakro'];
         $producto->prioridad = $request['opcionPrioridad'];
-        $producto->fecha_inicio = $request['fechaInicio'];
-        $producto->fecha_fin = $request['fechaFin'];
+        $producto->fecha_inicio =  $fecha_inicio;
+        $producto->fecha_fin = $fechaFin;
         $producto->categoria_id = $request['subcategoria'];
+        $producto->ciudad_id = $request['ciudad'];
+
         $producto->save();
 
         Session::flash('editar', 'Producto Editado correctamente');

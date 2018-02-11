@@ -46,7 +46,8 @@ Route::group(['middleware' => 'auth'], function () {
 
 
     /// url para obtener datos de paginas 
-     Route::get('/paginas','PaginasController@ActualizarProductos');
+     Route::get('/actualizar','ProductController@ActualizarPrecios');
+     Route::post('/actualizar','ProductController@ActualizarPreciosBD');
     
 
 

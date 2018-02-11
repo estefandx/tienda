@@ -29,7 +29,7 @@
             <li><a href="{{ url('/listado_productos') }}"><i class='fa fa-link'></i> <span>Listar Producto</span></a></li>
             <li><a href="{{ url('cargar_archivo') }}"><i class='fa fa-link'></i> <span>Cargar Archivo </span></a></li>
               <li><a href="{{ url('cargar_imagenes') }}"><i class='fa fa-link'></i> <span>Cargar Imagenes  </span></a></li>
-            <li><a href="#"><i class='fa fa-link'></i> <span>Actualizar Precios</span></a></li>
+            <li><a href="{{ url('actualizar') }}"><i class='fa fa-link'></i> <span>Actualizar Precios</span></a></li>
 
         </ul><!-- /.sidebar-menu -->
     </section>

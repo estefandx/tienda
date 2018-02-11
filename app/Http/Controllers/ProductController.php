@@ -411,4 +411,37 @@ class ProductController extends Controller
         return view('vendor.adminlte.productos.cargar-imagenes');
      }
 
+
+
+     public function ActualizarPrecios()
+     {
+        return view('vendor.adminlte.productos.actualizar-precio');
+     }
+
+
+       public function ActualizarPreciosBD()
+     {
+        include(app_path() . '\Http\Controllers\scriptPrecios.php'); 
+        $productos = Producto::all();
+
+
+        foreach ($productos as $producto) {
+           
+                        $producto->precio_exito= precioExito($producto->link_exito);
+                        $producto->precio_jumbo= precioJumbo($producto->link_jumbo);
+                        $producto->precio_euro= precioEuro($producto->link_euro);
+                        $producto->precio_makro= precioMakro($producto->link_makro);
+                        $producto->precio_carulla= precioCarulla($producto->link_carulla);
+                        $producto->save();
+
+        }
+
+        Session::flash('correcto', 'Productos actualizados en precio');
+        return redirect('/actualizar');
+
+
+   
+        
+     }
+
 }

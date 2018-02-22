@@ -19,8 +19,9 @@ class ConsultasController extends Controller
    		$categoria = $request['categoria'];
    		$subcategoria = $request['subcategoria'];
    		$producto  = strtolower($request['producto']);		
+      $ciudad  =  $request['ciudad'];
 
-   		if ($subcategoria == "" and $producto == "" ) {
+   		if ($subcategoria == "" and $producto == "" and $ciudad == 0 ) {
    			
    		//$results = DB::select('select * from productos where categoria_id = ?', [$categoria]);
 
@@ -34,7 +35,7 @@ class ConsultasController extends Controller
 
 
 		 $resultado = Producto::join("categorias","categorias.categoria_id","=","productos.categoria_id")
-		->where('categorias.categoria_padre','=', $form['categoria'])
+		 ->where('categorias.categoria_padre','=', $form['categoria'])
 		 ->select('productos.*')
 		 ->paginate(10);
 
@@ -42,7 +43,7 @@ class ConsultasController extends Controller
 		
           
      	//DD($resultado);
-   		}elseif (!$subcategoria == "" and $producto == "") {
+   		}elseif (!$subcategoria == "" and $producto == "" and $ciudad == 0) {
 
    			///$resultado = DB::select('SELECT * FROM productos WHERE categoria_id = ?', [$subcategoria]);
 
@@ -50,7 +51,7 @@ class ConsultasController extends Controller
    			 ->paginate(10);
    			 $resultado->setPath('?subcategoria='.$form['subcategoria']);
 
-   		}elseif(($subcategoria == "" and !$producto == "") or (!$subcategoria == "" and !$producto == "")) {
+   		}elseif(($subcategoria == "" and !$producto == "" and $ciudad == 0 ) or (!$subcategoria == "" and !$producto == "" and $ciudad == 0)) {
 
    			//$resultado = DB::select('SELECT * FROM productos WHERE LOWER(nombre) like "%?%"', [$producto]);
    			
@@ -58,10 +59,34 @@ class ConsultasController extends Controller
    			 ->paginate(10);
    			 $resultado->setPath('?producto='.$form['producto']);
 
+   		}elseif ($subcategoria == "" and $producto == "" and !$ciudad == "") {
+          
+          $resultado = Producto::join("categorias","categorias.categoria_id","=","productos.categoria_id")
+            ->join("ciudades","ciudades.ciudad_id","=","productos.ciudad_id")                      
+           ->where('categorias.categoria_padre','=', $form['categoria'])
+            ->where('ciudades.ciudad_id','=', $form['ciudad'])
+           ->select('productos.*')
+           ->paginate(10);
+      }elseif (!$subcategoria == "" and $producto == "" and !$ciudad == "") {
+            
+             $resultado = Producto::where('productos.categoria_id','=', $form['subcategoria'])
+             ->where('productos.ciudad_id','=', $form['ciudad'])
+             ->paginate(10);
+             $resultado->setPath('?subcategoria='.$form['subcategoria']);
+      }elseif ($subcategoria == "" and !$producto == "" and !$ciudad == "") {
 
-
-
-   		}
+            $resultado = Producto::where('nombre','like','%'.strtolower($request['producto']).'%')
+             ->where('productos.ciudad_id','=', $form['ciudad'])
+            ->paginate(10);
+            $resultado->setPath('?producto='.$form['producto']);
+      }elseif (!$subcategoria == "" and !$producto == "" and !$ciudad == "") {
+              
+                $resultado = Producto::where('nombre','like','%'.strtolower($request['producto']).'%')
+             ->where('productos.ciudad_id','=', $form['ciudad'])
+             ->where('productos.categoria_id','=', $form['subcategoria'])
+            ->paginate(10);
+            $resultado->setPath('?producto='.$form['producto']);
+      }
 
    		
    	    // DD($resultado);  

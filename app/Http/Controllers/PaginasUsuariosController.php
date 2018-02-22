@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Categoria;
 use App\Producto;
+use App\Ciudad;
 
 class PaginasUsuariosController extends Controller
 {
@@ -18,7 +19,8 @@ class PaginasUsuariosController extends Controller
 		 
 		//dd($destacados);
         $categorias = Categoria::where('categoria_padre',null)->get();
-         return view('principal.index',compact('categorias','destacados'));
+        $ciudades = Ciudad::all();
+         return view('principal.index',compact('categorias','destacados','ciudades'));
     }
 
 

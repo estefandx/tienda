@@ -30,11 +30,10 @@
             <div class="form-group">     
                 <label for="subCategoriaProducto">Ciudad</label>
                     <select class="form-control" id="ciudad" name="ciudad" placeholder="Ciudad">
-                      <option>Seleccionar</option>
-                      <option>Medellín</option>
-                      <option>Bogotá</option>
-                      <option>Pereira</option>
-                      <option>Cali</option>
+                       <option value="0">Seleccione una ciudad</option>
+                        @foreach($ciudades as $ciudad)
+                          <option value="{{$ciudad->ciudad_id}}">{{$ciudad->nombre}}</option>
+                        @endforeach
                     </select>
               </div>
 
